@@ -55,7 +55,9 @@ copy config.example.yaml config.yaml
 
 1. Откройте https://github.com/ggml-org/llama.cpp/releases и скачайте из последнего релиза два архива под Windows с **cuda** в названии:
    сам llama.cpp (`llama-*-bin-win-cuda-*-x64.zip`) и `cudart-llama-bin-win-cuda-*-x64.zip`.
-2. Распакуйте оба в одну папку, например `C:\llama`. Там должен лежать `llama-server.exe`.
+2. Создайте папку `C:\llama` и распакуйте **содержимое обоих архивов прямо в неё**, без подпапок:
+   библиотеки CUDA из `cudart-…` (`cudart64_*.dll`, `cublas64_*.dll`) должны лежать рядом с `llama-server.exe`.
+   Мастер «Извлечь всё…» в Windows предлагает подпапку с именем архива — сотрите её из пути.
 
 ### 4. Модель
 
