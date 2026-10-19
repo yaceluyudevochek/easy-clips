@@ -31,7 +31,12 @@ winget install Git.Git
 
 ### 2. Проект и зависимости
 
-Скопируйте папку `clipforge` на компьютер (например, в `C:\clipforge`) и дважды щёлкните **`install.bat`**.
+```powershell
+cd C:\
+git clone https://github.com/yaceluyudevochek/easy-clips.git clipforge
+```
+
+Откройте папку `C:\clipforge` и дважды щёлкните **`install.bat`**.
 Он создаст виртуальное окружение, поставит зависимости (несколько ГБ, в том числе CUDA-библиотеки для Whisper,
 так что CUDA Toolkit отдельно не нужен), создаст `config.yaml` и ярлык **clipforge** на рабочем столе.
 

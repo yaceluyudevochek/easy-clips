@@ -119,7 +119,8 @@ class ColorButton(QPushButton):
 
     def set_rgb(self, rgb: str) -> None:
         self.rgb = rgb.lstrip("#").upper()
-        text = "#000" if QColor("#" + self.rgb).lightness() > 128 else "#fff"
+        c = QColor("#" + self.rgb)
+        text = "#000" if 0.299 * c.red() + 0.587 * c.green() + 0.114 * c.blue() > 150 else "#fff"
         self.setText("#" + self.rgb)
         self.setStyleSheet(f"background:#{self.rgb}; color:{text}; font-weight:600;")
 
