@@ -1,0 +1,10 @@
+faster-whisper>=1.1.0
+opencv-python>=4.10
+numpy>=1.24
+requests>=2.31
+PyYAML>=6.0
+yt-dlp>=2025.1.1
+PySide6>=6.6
+# CUDA libraries for faster-whisper (CTranslate2) without installing the full CUDA Toolkit
+nvidia-cublas-cu12; sys_platform == "win32" or sys_platform == "linux"
+nvidia-cudnn-cu12==9.*; sys_platform == "win32" or sys_platform == "linux"

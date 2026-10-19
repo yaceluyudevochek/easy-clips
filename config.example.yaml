@@ -1,0 +1,48 @@
+# Copy to config.yaml and adjust paths. Every key is optional — defaults live in clipforge/config.py.
+workdir: work
+
+whisper:
+  model: large-v3-turbo        # large-v3 if turbo makes mistakes on your language
+  device: cuda
+  compute_type: int8_float16   # ~2-3 GB VRAM
+  language: null               # null = autodetect, "ru" to force Russian
+
+llm:
+  # Local llama.cpp server, started by the pipeline only for the LLM stage (frees VRAM for Whisper).
+  # All of this can also be set in the GUI (Настройки tab).
+  server_exe: 'C:\llama\llama-server.exe'
+  model_path: 'C:\models\Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf'
+  gpu_layers: 99
+  # MoE layers whose experts stay in RAM. 48 = all of them (fits 8 GB VRAM). If nvidia-smi shows free
+  # VRAM during the LLM stage, lower it (40, 36...) for speed. 0 for dense models such as Qwen3-8B.
+  n_cpu_moe: 48
+  ctx_size: 16384
+  base_url: http://127.0.0.1:8080/v1
+  model: local
+  temperature: 0.3
+  # Cloud or another server instead: set server_exe to '' and fill base_url / api_key / model.
+
+highlights:
+  min_duration: 20
+  max_duration: 60
+  max_clips: 8
+  chunk_minutes: 8
+  rerank: true
+
+reframe:
+  output_width: 1080
+  output_height: 1920
+  two_shot: true               # frame two people together when they fit
+
+captions:
+  enabled: true
+  font: Arial Black
+  font_size: 84
+  uppercase: true
+  max_words: 3
+  color: FFFFFF
+  highlight_color: FFE600
+
+render:
+  encoder: h264_nvenc          # libx264 for CPU encoding
+  cq: 21
